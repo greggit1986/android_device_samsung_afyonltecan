@@ -44,12 +44,20 @@ void vendor_load_properties()
 
     if (bootloader.find("G386T") == 0) {
         /* afyonltetmo */
-        property_override("ro.build.description", "afyonltetmo-user 4.4.2 KOT49H G386TUVU1ANK3 release-keys");
+        property_override("ro.build.description", "afyonltetmo-user 4.4.2 KOT49H G386TUVU1AQD2 release-keys");
         set_ro_product_prop("device", "afyonltetmo");
-        set_ro_build_prop("fingerprint", "samsung/afyonltetmo/afyonltetmo:4.4.2/KOT49H/G386TUVU1ANK3:user/release-keys");
+        set_ro_build_prop("fingerprint", "samsung/afyonltetmo/afyonltetmo:4.4.2/KOT49H/G386TUVU1AQD2:user/release-keys");
         set_ro_product_prop("model", "SM-G386T");
         set_ro_product_prop("name", "afyonltetmo");
         gsm_properties("3", "0");
+    } else if (bootloader.find("G386T1") == 0) {
+        /* afyonlteMetroPCS */
+        property_override("ro.build.description", "afyonlteMetroPCS-user 4.4.2 KOT49H G386T1UVU1AQD2 release-keys");
+        set_ro_product_prop("device", "afyonlteMetroPCS");
+        set_ro_build_prop("fingerprint", "samsung/afyonlteMetroPCS/afyonlteMetroPCS:4.4.2/KOT49H/G386T1UVU1AQD2:user/release-keys");
+        set_ro_product_prop("model", "SM-G386T1");
+        set_ro_product_prop("name", "afyonlteMetroPCS");
+        gsm_properties("3", "1");
     } else if (bootloader.find("G386W") == 0) {
         /* afyonltecan */
         property_override("ro.build.description", "afyonltevl-user 4.4.2 KOT49H G386WVLS1AQA1 release-keys");
@@ -57,7 +65,9 @@ void vendor_load_properties()
         set_ro_build_prop("fingerprint", "samsung/afyonltevl/afyonltecan:4.4.2/KOT49H/G386WVLS1AQA1:user/release-keys");
         set_ro_product_prop("model", "SM-G386W");
         set_ro_product_prop("name", "afyonltecan");
-        gsm_properties("3", "0");
+        /* property_set("ro.telephony.default_network", "9");
+        property_set("telephony.lteOnGsmDevice", "1"); JJRIP from cm12 - see init_msm8226.h for the formatting. gsm_properties("3", "0") does not work*/
+        gsm_properties("9", "1");
     } else {
         gsm_properties("3", "0");
     }

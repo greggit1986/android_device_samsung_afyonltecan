@@ -18,11 +18,16 @@ include device/samsung/afyonlte-common/BoardConfigCommon.mk
 
 DEVICE_PATH := device/samsung/afyonltecan
 
+# ShimsJJADD
+TARGET_LD_SHIM_LIBS += \
+        /system/vendor/lib/libmmcamera_imx175.so|libshim_imx175.so
+
 # Kernel
 #For Recovery
 #TARGET_KERNEL_CONFIG := kernel3.4.113_afyonltecan7_defconfig
 #For Normal build
-TARGET_KERNEL_CONFIG := kernel3.4.113_afyonltecan4_defconfig
+#TARGET_KERNEL_CONFIG := kernel3.4.113_afyonltecan4_defconfig
+TARGET_KERNEL_CONFIG := kernel3.4.113_afyonltecan4exp_defconfig
 
 # Init
 TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_afyonlte
@@ -31,7 +36,7 @@ TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_afyonlte
 # include $(COMMON_PATH)/nfc/pn547/board.mk
 
 # Radio/RIL
-include $(COMMON_PATH)/radio/single/board.mk
+#include $(COMMON_PATH)/radio/single/board.mk
 
 # inherit from the proprietary version
 include vendor/samsung/afyonltecan/BoardConfigVendor.mk
