@@ -43,29 +43,21 @@ void vendor_load_properties()
 {
     std::string bootloader = GetProperty("ro.bootloader", "");
 
-    if (bootloader.find("I9301I") == 0) {
-        /* s3ve3gxx */
-        property_override("ro.build.description", "s3ve3gds-user 4.4.2 KOT49H I9301IXXUANL1 release-keys");
-        set_ro_product_prop("device", "s3ve3gxx");
-        set_ro_build_prop("fingerprint", "samsung/s3ve3gxx/s3ve3g:4.4.2/KOT49H/I9301IXXUANL1:user/release-keys");
-        set_ro_product_prop("model", "GT-I9301I");
-        set_ro_product_prop("name", "s3ve3gxx");
+    if (bootloader.find("G386W") == 0) {
+        /* afyonltecan */
+        property_override("ro.build.description", "afyonltevl-user 4.4.2 KOT49H G386WVLS1AQA1 release-keys");
+        set_ro_product_prop("device", "afyonltecan");
+        set_ro_build_prop("fingerprint", "samsung/afyonltevl/afyonltecan:4.4.2/KOT49H/G386WVLS1AQA1:user/release-keys");
+        set_ro_product_prop("model", "SM-G386W");
+        set_ro_product_prop("name", "afyonltecan");
         gsm_properties("3", "0");
-    } else if (bootloader.find("I9301Q") == 0) {
-        /* s3ve3gjv */
-        property_override("ro.build.description", "samsung/s3ve3gjv/s3ve3g:4.4.2/KOT49H/I9301QXXUANH1:user/release-keys");
-        set_ro_product_prop("device", "s3ve3gjv");
-        set_ro_build_prop("fingerprint", "samsung/s3ve3gjv/s3ve3g:4.4.2/KOT49H/I9301QXXUANH1:user/release-keys");
-        set_ro_product_prop("model", "GT-I9301Q");
-        set_ro_product_prop("name", "s3ve3gjv");
-        gsm_properties("3", "0");
-    } else if (bootloader.find("I9300I") == 0) {
-        /* s3ve3gdsds */
-        property_override("ro.build.description", "s3ve3gdsxx-user 4.4.4 KTU84P I9300IXWUBNJ1 release-keys");
-        set_ro_product_prop("device", "s3ve3gds");
-        set_ro_build_prop("fingerprint", "samsung/s3ve3gdsxx/s3ve3gds:4.4.4/KTU84P/I9300IXWUBNJ1:user/release-keys");
-        set_ro_product_prop("model", "GT-I9300I");
-        set_ro_product_prop("name", "s3ve3gds");
+    } else if (bootloader.find("G386T") == 0) {
+        /* afyonltetmo */
+        property_override("ro.build.description", "afyonltetmo-user 4.4.2 KOT49H G386TUVU1ANK3 release-keys");
+        set_ro_product_prop("device", "afyonltetmo");
+        set_ro_build_prop("fingerprint", "samsung/afyonltetmo/afyonltetmo:4.4.2/KOT49H/G386TUVU1ANK3:user/release-keys");
+        set_ro_product_prop("model", "SM-G386T");
+        set_ro_product_prop("name", "afyonltetmo");
         gsm_properties("3", "0");
     } else {
         gsm_properties("3", "0");

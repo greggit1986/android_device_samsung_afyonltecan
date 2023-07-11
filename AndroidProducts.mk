@@ -14,9 +14,9 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_s3ve3gxx.mk
+    $(LOCAL_DIR)/lineage_afyonltecan.mk
 
 COMMON_LUNCH_CHOICES := \
-    lineage_s3ve3gxx-user \
-    lineage_s3ve3gxx-userdebug \
-    lineage_s3ve3gxx-eng
+    lineage_afyonltecan-user \
+    lineage_afyonltecan-userdebug \
+    lineage_afyonltecan-eng

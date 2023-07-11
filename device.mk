@@ -18,7 +18,7 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # Get non-open-source specific aspects
-$(call inherit-product-if-exists, vendor/samsung/s3ve3gxx/s3ve3gxx-vendor.mk)
+$(call inherit-product-if-exists, vendor/samsung/afyonltecan/afyonltecan-vendor.mk)
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -28,11 +28,11 @@ PRODUCT_PACKAGES += \
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # NFC
-# $(call inherit-product, device/samsung/s3ve3g-common/nfc/pn547/product.mk)
+# $(call inherit-product, device/samsung/afyonlte-common/nfc/pn547/product.mk)
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
 
-# common s3ve3g
-$(call inherit-product, device/samsung/s3ve3g-common/s3ve3g.mk)
+# common afyonlte
+$(call inherit-product, device/samsung/afyonlte-common/afyonlte.mk)
