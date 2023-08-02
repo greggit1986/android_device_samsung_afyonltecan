@@ -1,0 +1,105 @@
+
+# jjavcfixes
+
+# avc: denied { setattr } for comm="Binder:246_1" name="0" dev="mmcblk0p25" ino=544578 scontext=u:r:vold:s0 tcontext=u:object_r:rootfs:s0 tclass=dir permissive=1
+
+allow vold rootfs:dir { setattr };
+
+# avc: denied { search } for comm="init" name="/" dev="mmcblk0p21" ino=2 scontext=u:r:vendor_init:s0 tcontext=u:object_r:unlabeled:s0 tclass=dir permissive=1
+# avc: denied { setattr } for name="/" dev="mmcblk0p21" ino=2 scontext=u:r:vendor_init:s0 tcontext=u:object_r:unlabeled:s0 tclass=dir permissive=1
+
+allow vendor_init unlabeled:dir { search setattr };
+
+# avc: denied { dac_override } for capability=1 scontext=u:r:logpersist:s0 tcontext=u:r:logpersist:s0 tclass=capability permissive=1
+
+allow logpersist logpersist:capability { dac_override };
+
+#avc: denied { write } for comm="logcat" name="/" dev="mmcblk0p24" ino=2 scontext=u:r:logpersist:s0 tcontext=u:object_r:cache_file:s0 tclass=dir permissive=1
+
+allow logpersist cache_file:dir { write };
+
+# avc: denied { read } for comm="android.hardwar" name="input4" dev="sysfs" ino=23829 scontext=u:r:hal_sensors_default:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=1
+# avc: denied { open } for comm="android.hardwar" name="input4" dev="sysfs" ino=23829 scontext=u:r:hal_sensors_default:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=1
+
+allow hal_sensors_default sysfs:dir { read open };
+
+# avc: denied { open } for name="u:object_r:alarm_boot_prop:s0" dev="tmpfs" ino=7173 scontext=u:r:flags_health_check:s0 tcontext=u:object_r:alarm_boot_prop:s0 tclass=file permissive=1
+
+allow flags_health_check alarm_boot_prop:file { open };
+
+# avc: denied { open } for comm="flags_health_ch" name="u:object_r:bootloader_boot_reason_prop:s0" dev="tmpfs" ino=7183 scontext=u:r:flags_health_check:s0 tcontext=u:object_r:bootloader_boot_reason_prop:s0 tclass=file permissive=1
+
+allow flags_health_check bootloader_boot_reason_prop:file { open };
+
+# avc: denied { getattr } for comm="flags_health_ch" path="/dev/__properties__/u:object_r:ctl_console_prop:s0" dev="tmpfs" ino=7196 scontext=u:r:flags_health_check:s0 tcontext=u:object_r:ctl_console_prop:s0 tclass=file permissive=1
+
+allow flags_health_check ctl_console_prop:file { getattr };
+
+# avc: denied { getattr } for comm="flags_health_ch" path="/dev/__properties__/u:object_r:ctl_vendor_imsrcsservice_prop:s0" dev="tmpfs" ino=7214 scontext=u:r:flags_health_check:s0 tcontext=u:object_r:ctl_vendor_imsrcsservice_prop:s0 tclass=file permissive=1
+
+allow flags_health_check ctl_vendor_imsrcsservice_prop:file { getattr };
+
+# avc: denied { getattr } for comm="flags_health_ch" path="/dev/__properties__/u:object_r:ctl_vendor_wigigsvc_prop:s0" dev="tmpfs" ino=7215 scontext=u:r:flags_health_check:s0 tcontext=u:object_r:ctl_vendor_wigigsvc_prop:s0 tclass=file permissive=1
+
+allow flags_health_check ctl_vendor_wigigsvc_prop:file { getattr };
+
+# avc: denied { open } for comm="flags_health_ch" name="u:object_r:device_logging_prop:s0" dev="tmpfs" ino=7229 scontext=u:r:flags_health_check:s0 tcontext=u:object_r:device_logging_prop:s0 tclass=file permissive=1
+
+allow flags_health_check device_logging_prop:file { open };
+
+# avc: denied { open } for comm="flags_health_ch" name="u:object_r:diag_mdlog_prop:s0" dev="tmpfs" ino=7231 scontext=u:r:flags_health_check:s0 tcontext=u:object_r:diag_mdlog_prop:s0 tclass=file permissive=1
+# avc: denied { getattr } for comm="flags_health_ch" path="/dev/__properties__/u:object_r:diag_mdlog_prop:s0" dev="tmpfs" ino=7231 scontext=u:r:flags_health_check:s0 tcontext=u:object_r:diag_mdlog_prop:s0 tclass=file permissive=1
+
+allow flags_health_check diag_mdlog_prop:file { open getattr };
+
+# avc: denied { getattr } for comm="flags_health_ch" path="/dev/__properties__/u:object_r:dolby_prop:s0" dev="tmpfs" ino=7232 scontext=u:r:flags_health_check:s0 tcontext=u:object_r:dolby_prop:s0 tclass=file permissive=1
+
+allow flags_health_check dolby_prop:file { getattr };
+
+# avc: denied { getattr } for comm="flags_health_ch" path="/dev/__properties__/u:object_r:dumpstate_options_prop:s0" dev="tmpfs" ino=7233 scontext=u:r:flags_health_check:s0 tcontext=u:object_r:dumpstate_options_prop:s0 tclass=file permissive=1
+
+allow flags_health_check dumpstate_options_prop:file { getattr };
+
+# avc: denied { getattr } for comm="flags_health_ch" path="/dev/__properties__/u:object_r:dynamic_system_prop:s0" dev="tmpfs" ino=7235 scontext=u:r:flags_health_check:s0 tcontext=u:object_r:dynamic_system_prop:s0 tclass=file permissive=1
+
+allow flags_health_check dynamic_system_prop:file { getattr };
+
+# avc: denied { getattr } for comm="flags_health_ch" path="/dev/__properties__/u:object_r:fm_prop:s0" dev="tmpfs" ino=7243 scontext=u:r:flags_health_check:s0 tcontext=u:object_r:fm_prop:s0 tclass=file permissive=1
+
+allow flags_health_check fm_prop:file { getattr };
+
+# avc: denied { open } for comm="flags_health_ch" name="u:object_r:fst_prop:s0" dev="tmpfs" ino=7245 scontext=u:r:flags_health_check:s0 tcontext=u:object_r:fst_prop:s0 tclass=file permissive=1
+
+allow flags_health_check fst_prop:file { open };
+
+# avc: denied { getattr } for comm="flags_health_ch" path="/dev/__properties__/u:object_r:graphics_vulkan_prop:s0" dev="tmpfs" ino=7247 scontext=u:r:flags_health_check:s0 tcontext=u:object_r:graphics_vulkan_prop:s0 tclass=file permissive=1
+
+allow flags_health_check graphics_vulkan_prop:file { getattr };
+
+# avc: denied { getattr } for comm="flags_health_ch" path="/dev/__properties__/u:object_r:gsid_prop:s0" dev="tmpfs" ino=7248 scontext=u:r:flags_health_check:s0 tcontext=u:object_r:gsid_prop:s0 tclass=file permissive=1
+
+allow flags_health_check gsid_prop:file { getattr };
+
+# avc: denied { open } for comm="flags_health_ch" name="u:object_r:heapprofd_enabled_prop:s0" dev="tmpfs" ino=7249 scontext=u:r:flags_health_check:s0 tcontext=u:object_r:heapprofd_enabled_prop:s0 tclass=file permissive=1
+
+allow flags_health_check heapprofd_enabled_prop:file { open };
+
+# avc: denied { open } for comm="flags_health_ch" name="u:object_r:hwui_prop:s0" dev="tmpfs" ino=7252 scontext=u:r:flags_health_check:s0 tcontext=u:object_r:hwui_prop:s0 tclass=file permissive=1
+
+allow flags_health_check hwui_pro:file { open };
+
+# avc: denied { getattr } for comm="flags_health_ch" path="/dev/__properties__/u:object_r:logpersistd_logging_prop:s0" dev="tmpfs" ino=7261 scontext=u:r:flags_health_check:s0 tcontext=u:object_r:logpersistd_logging_prop:s0 tclass=file permissive=1
+
+allow flags_health_check logpersistd_logging_prop:file { getattr };
+
+# avc: denied { open } for name="u:object_r:sys_usb_configfs_prop:s0" dev="tmpfs" ino=7304 scontext=u:r:flags_health_check:s0 tcontext=u:object_r:sys_usb_configfs_prop:s0 tclass=file permissive=1
+
+allow flags_health_check sys_usb_configfs_prop:file { getattr open };
+
+# avc: denied { open } for name="u:object_r:sys_usb_controller_prop:s0" dev="tmpfs" ino=7305 scontext=u:r:flags_health_check:s0 tcontext=u:object_r:sys_usb_controller_prop:s0 tclass=file permissive=1
+
+allow flags_health_check sys_usb_controller_prop:file { open };
+
+# 
+
+
