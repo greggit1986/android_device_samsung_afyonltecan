@@ -86,7 +86,7 @@ allow flags_health_check heapprofd_enabled_prop:file { open };
 
 # avc: denied { open } for comm="flags_health_ch" name="u:object_r:hwui_prop:s0" dev="tmpfs" ino=7252 scontext=u:r:flags_health_check:s0 tcontext=u:object_r:hwui_prop:s0 tclass=file permissive=1
 
-allow flags_health_check hwui_pro:file { open };
+#allow flags_health_check hwui_pro:file { open };
 
 # avc: denied { getattr } for comm="flags_health_ch" path="/dev/__properties__/u:object_r:logpersistd_logging_prop:s0" dev="tmpfs" ino=7261 scontext=u:r:flags_health_check:s0 tcontext=u:object_r:logpersistd_logging_prop:s0 tclass=file permissive=1
 
