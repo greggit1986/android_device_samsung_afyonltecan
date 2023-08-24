@@ -19,8 +19,8 @@ include device/samsung/afyonlte-common/BoardConfigCommon.mk
 DEVICE_PATH := device/samsung/afyonltecan
 
 # Shims
-#TARGET_LD_SHIM_LIBS += \
-#        /system/vendor/lib/libmmcamera_imx175.so|libshim_imx175.so
+TARGET_LD_SHIM_LIBS += \
+        /system/vendor/lib/libmmcamera_imx175.so|libshim_imx175.so
 
 # Kernel
 TARGET_KERNEL_CONFIG := lineage_afyonltecan_defconfig
