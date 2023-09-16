@@ -18,16 +18,15 @@ include device/samsung/afyonlte-common/BoardConfigCommon.mk
 
 DEVICE_PATH := device/samsung/afyonltecan
 
-# ShimsJJADD
+# Shims
 TARGET_LD_SHIM_LIBS += \
         /system/vendor/lib/libmmcamera_imx175.so|libshim_imx175.so
 
 # Kernel
-#For Recovery
-#TARGET_KERNEL_CONFIG := kernel3.4.113_afyonltecan7_defconfig
-#For Normal build
-#TARGET_KERNEL_CONFIG := kernel3.4.113_afyonltecan4_defconfig
-TARGET_KERNEL_CONFIG := kernel3.4.113_afyonltecan4exp_defconfig
+####### For Recovery
+#TARGET_KERNEL_CONFIG := lineage_afyonltecan-recovery_defconfig
+####### For Normal build
+TARGET_KERNEL_CONFIG := lineage_afyonltecan_defconfig
 
 # Init
 TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_afyonlte
