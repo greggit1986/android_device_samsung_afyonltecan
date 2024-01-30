@@ -1,0 +1,6 @@
+#avc: denied { setattr } for name="obb" dev="mmcblk0p25" ino=32518 scontext=u:r:mediaprovider_app:s0:c97,c256,c512,c768 tcontext=u:object_r:rootfs:s0 tclass=dir permissive=1 app=com.android.providers.media.module
+
+#type mediaprovider_app, domain, coredomain;
+
+#allow mediaprovider_app rootfs:dir { setattr };
+
