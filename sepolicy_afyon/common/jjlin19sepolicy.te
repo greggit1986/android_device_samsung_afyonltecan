@@ -42,6 +42,13 @@ allow logpersist self:capability dac_override;
 #============= mediacodec ==============
 allow mediacodec default_prop:file { getattr open read };
 
+#============= mediaprovider_app ==============
+allow mediaprovider_app rootfs:dir setattr;
+allow mediaprovider_app rootfs:file getattr;
+
+#============= mediaserver ==============
+allow mediaserver vendor_default_prop:file { getattr open read };
+
 #============= mpdecision ==============
 allow mpdecision default_prop:file { getattr open read };
 
