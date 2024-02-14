@@ -36,7 +36,6 @@
 
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
-#include "init_afyonlte.h"
 
 using android::base::GetProperty;
 using android::base::ReadFileToString;
@@ -54,46 +53,7 @@ std::vector<std::string> ro_product_props_default_source_order = {
     "system_ext.",
 };
 
-void set_rild_libpath(char const variant[])
-{
-    std::string libpath("/system/vendor/lib/libsec-ril");
-    //libpath += variant;
-    libpath += ".so";
-
-    property_override("vendor.rild.libpath", libpath.c_str());
-}
-
-void cdma_properties(char const operator_alpha[],
-        char const operator_numeric[],
-        char const default_cdma_sub[],
-        char const default_network[],
-        char const rild_lib_variant[])
-{
-    // Dynamic CDMA Properties
-    property_override("ro.cdma.home.operator.alpha", operator_alpha);
-    property_override("ro.cdma.home.operator.numeric", operator_numeric);
-    property_override("ro.telephony.default_cdma_sub", default_cdma_sub);
-    property_override("ro.telephony.default_network", default_network);
-    set_rild_libpath(rild_lib_variant);
-
-    // Static CDMA Properties
-    property_override("ril.subscription.types", "NV,RUIM");
-    property_override("telephony.lteOnCdmaDevice", "1");
-}
-
-void gsm_properties(const char default_network[],
-        char const rild_lib_variant[])
-{
-    set_rild_libpath(rild_lib_variant);
-
-    // Dynamic GSM Properties
-    property_override("ro.telephony.default_network", default_network);
-
-    // Static GSM Properties
-    property_override("telephony.lteOnGsmDevice", "1");
-}
-
-void property_override(char const prop[], char const value[], bool add)
+void property_override(char const prop[], char const value[], bool add = true)
 {
     auto pi = (prop_info *) __system_property_find(prop);
 

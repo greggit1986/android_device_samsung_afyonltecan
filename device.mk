@@ -37,10 +37,6 @@ PRODUCT_COPY_FILES += \
 # NFC
 # $(call inherit-product, device/samsung/afyonlte-common/nfc/pn547/product.mk)
 
-# Shims
-#PRODUCT_PACKAGES += \
-#    libcutils_shim
-
 # common msm8226
 $(call inherit-product, device/samsung/msm8226-common/common.mk)
 
