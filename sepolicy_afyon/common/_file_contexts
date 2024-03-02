@@ -1,8 +1,0 @@
-#JJAdd firmware
-#/bt_firmware(/.*)?    u:object_r:bt_firmware_file:s0
-#/firmware(/.*)?       u:object_r:firmware_file:s0
-
-# root mount
-#/firmware                                               #u:object_r:firmware_file:s0
-/firmware-modem         				u:object_r:firmware_file:s0
-#/efs                                                    #u:object_r:firmware_file:s0

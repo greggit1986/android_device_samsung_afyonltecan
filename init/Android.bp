@@ -20,7 +20,6 @@ cc_library_static {
     srcs: ["init_afyonlte.cpp"],
     include_dirs: [
         "device/samsung/msm8226-common/init",
-        //"system/core/base/include",
         "system/core/include",
         "system/core/init",
     ],

@@ -1,0 +1,61 @@
+#============= crash_dump ==============
+allow crash_dump resourcecache_data_file:file { getattr open read };
+
+#============= hal_sensors_default ==============
+allow hal_sensors_default sysfs:dir { open read };
+allow hal_sensors_default sysfs:file { open read };
+
+#============= logpersist ==============
+allow logpersist cache_file:dir { add_name open read write };
+allow logpersist cache_file:file { append create getattr ioctl open };
+
+#============= netd ==============
+allow netd device:dir { open read };
+
+#============= rild ==============
+allow rild unlabeled:file { getattr open read };
+
+#============= timekeep_app ==============
+allow timekeep_app content_capture_service:service_manager find;
+allow timekeep_app game_service:service_manager find;
+allow timekeep_app netstats_service:service_manager find;
+
+#============= toolbox ==============
+allow toolbox rootfs:dir { open read setattr };
+
+#============= vendor_init ==============
+allow vendor_init efs_file:chr_file getattr;
+allow vendor_init init_service_status_private_prop:file read;
+allow vendor_init radio_core_data_file:dir { add_name create getattr setattr write };
+allow vendor_init unlabeled:blk_file { getattr relabelfrom };
+allow vendor_init unlabeled:chr_file { getattr relabelfrom };
+allow vendor_init unlabeled:dir search;
+
+#============= vold ==============
+allow vold rootfs:dir setattr;
+allow vold rootfs:dir { add_name create write };
+
+#============= zygote ==============
+allow zygote device:dir { add_name create open read setattr write };
+allow zygote device:file { create open write };
+
+#============= mediaprovider_app ==============
+allow mediaprovider_app rootfs:dir { add_name create read write };
+allow mediaprovider_app rootfs:dir {open setattr};
+allow mediaprovider_app rootfs:file getattr;
+
+#============= priv_app ==============
+allow priv_app rootfs:dir { add_name create write };
+
+#============= system_app ==============
+allow system_app vold:binder call;
+
+#============= untrusted_app_30 ==============
+allow untrusted_app_30 firmware_file:dir search;
+allow untrusted_app_30 sysfs:dir { open read };
+allow untrusted_app_30 sysfs:file { open read };
+allow untrusted_app_30 sysfs_batteryinfo:dir search;
+allow untrusted_app_30 sysfs_camera:dir search;
+allow untrusted_app_30 sysfs_graphics:dir search;
+allow untrusted_app_30 vendor_default_prop:file open;
+allow untrusted_app_30 vendor_system_prop:file open;
