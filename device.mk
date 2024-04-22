@@ -37,6 +37,11 @@ PRODUCT_COPY_FILES += \
 # NFC
 # $(call inherit-product, device/samsung/afyonlte-common/nfc/pn547/product.mk)
 
+# Radio/RIL
+PRODUCT_PACKAGES += \
+    libcnefeatureconfig \
+    librmnetctl
+
 # common msm8226
 $(call inherit-product, device/samsung/msm8226-common/common.mk)
 
