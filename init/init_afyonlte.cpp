@@ -135,7 +135,7 @@ void vendor_load_properties()
     } else if (bootloader.find("G386T") == 0) {
         /* afyonltetmo and afyonlteMetroPCS */
         for (const auto &source : ro_product_props_default_source_order) {
-            set_ro_product_prop(source, "build.fingerprint", "afyonltetmo-user 4.4.2 KOT49H G386TUVU1ANK3 release-keys");
+            set_ro_product_prop(source, "build.fingerprint", "samsung/afyonltetmo/afyonltetmo:4.4.2/KOT49H/G386TUVU1ANK3:user/release-keys");
             set_ro_product_prop(source, "device", "afyonltetmo");
             set_ro_product_prop(source, "model", "SM-G386T");
             set_ro_product_prop(source, "name", "afyonltetmo");
@@ -145,7 +145,7 @@ void vendor_load_properties()
     } else if (bootloader.find("G386T1") == 0) {
         /* afyonlteMetroPCS -- just in case something weird happens */
         for (const auto &source : ro_product_props_default_source_order) {
-            set_ro_product_prop(source, "build.fingerprint", "afyonltetmo-user 4.4.2 KOT49H G386TUVU1ANK3 release-keys");
+            set_ro_product_prop(source, "build.fingerprint", "samsung/afyonltetmo/afyonltetmo:4.4.2/KOT49H/G386TUVU1ANK3:user/release-keys");
             set_ro_product_prop(source, "device", "afyonltetmo");
             set_ro_product_prop(source, "model", "SM-G386T");
             set_ro_product_prop(source, "name", "afyonltetmo");
