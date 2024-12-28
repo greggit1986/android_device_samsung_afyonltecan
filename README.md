@@ -1,26 +1,21 @@
-Copyright 2022 - The Khalvat-M Project
+Device Tree For Samsung Galaxy Core LTE
+======================================= 
+## Unified variants: SM-G386W , SM-G386GT , SM-G386GT1
 
-# Device configuration for Samsung Galaxy S4 LTE-A
-## Unified variants: GT-I9506 , SHV-E330S , SHV-E330K , SHV-E330L
+| Basic   | Spec Sheet                  |
+| -------:|:--------------------------- |
+| CPU     | Quad-core 1.4 GHz Cortex-A7 | 
+| CHIPSET | Qualcomm Snapdragon 400 |
+| GPU     | Adreno 305 |
+| Memory  | 1.5GB RAM |
+| Shipped Android Version | 4.4.2 |
+| Storage | 16GB |
+| MicroSD | Up to 64GB |
+| Battery | 2100 mAh |
+| Display | 4.59in(110mm) 960x540px 240dpi |
+| Camera  | 5 MP, Led flash |
 
-Basic   | Specification List
--------:|:-------------------------
-CPU     | Quad-core 2.3 GHz Krait 400
-Chipset | Qualcomm Snapdragon 800
-GPU     | Adreno 330
-Memory  | 2 GB
-Shipped Android Version | 4.2.2 (Jelly Bean), upgradable to 5.0.1 (Lollipop); TouchWiz UI
-Storage | 16/32 GB
-MicroSD | Up to 64 GB
-Battery | Removable Li-Ion 2600 mAh
-Usb | microUSB 2.0 (MHL 2 TV-out), USB Host
-Dimensions | 136.6 x 69.8 x 7.9 mm (5.38 x 2.75 x 0.31 in)
-Display | 1080 x 1920 pixels 16:9 ratio (~441 ppi density)
-Rear Camera  | 13 MP, f/2.2, 31mm, OIS, autofocus, LED flash
-Front Camera | 2 MP, f/2.4, 27mm (wide), Dual video call
-Release Date | November 2013
-
-![Galaxy S4 LTE-A](https://github.com/samsung-msm8974/device_samsung_ks01lte/blob/lineage-21/information/ks01lte.gif)
+![Galaxy Core LTE G386W](https://www.gsmarena.com/samsung_galaxy_core_lte_g386w-6846.php "Galaxy Core LTE G386W")
 
 # For building Android 14
 ### Create `.repo/local_manifests/roomservice.xml` with the following content:

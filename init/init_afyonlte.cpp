@@ -36,7 +36,7 @@
 
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
-#include "init_ks01lte.h"
+#include "init_afyonlte.h"
 
 using android::base::GetProperty;
 using android::base::ReadFileToString;
@@ -56,8 +56,8 @@ std::vector<std::string> ro_product_props_default_source_order = {
 
 void set_rild_libpath(char const variant[])
 {
-    std::string libpath("/system/vendor/lib/libsec-ril.");
-    libpath += variant;
+    std::string libpath("/system/vendor/lib/libsec-ril");
+    //libpath += variant;
     libpath += ".so";
 
     property_override("vendor.rild.libpath", libpath.c_str());
@@ -122,46 +122,36 @@ void vendor_load_properties()
         property_override(prop_name.c_str(), value.c_str(), false);
     };
 
-    if (bootloader.find("I9506") == 0) {
-        /* ks01lte */
+    if (bootloader.find("G386W") == 0) {
+        /* Afyonltecan */
         for (const auto &source : ro_product_props_default_source_order) {
-            set_ro_product_prop(source, "build.fingerprint", "samsung/ks01ltexx/ks01lte:5.0.1/LRX22C/I9506XXUDRB1:user/release-keys");
-            set_ro_product_prop(source, "device", "ks01ltexx");
-            set_ro_product_prop(source, "model", "GT-I9506");
-            set_ro_product_prop(source, "name", "ks01lte");
+            set_ro_product_prop(source, "build.fingerprint", "samsung/afyonltevl/afyonltecan:4.4.2/KOT49H/G386WVLS1AQA1:user/release-keys");
+            set_ro_product_prop(source, "device", "afyonltecan");
+            set_ro_product_prop(source, "model", "SM-G386W");
+            set_ro_product_prop(source, "name", "afyonltecan");
         }
-        property_override("ro.build.description", "ks01ltexx-user 5.0.1 LRX22C I9506XXUDRB1 release-keys");
-        property_override("ro.build.product", "ks01ltexx");
-    } else if (bootloader.find("E330S") == 0) {
-        /* ks01lteskt */
+        property_override("ro.build.description", "afyonltevl-user 4.4.2 KOT49H G386WVLS1AQA1 release-keys");
+        property_override("ro.build.product", "afyonltecan");
+    } else if (bootloader.find("G386T") == 0) {
+        /* afyonltetmo and afyonlteMetroPCS */
         for (const auto &source : ro_product_props_default_source_order) {
-            set_ro_product_prop(source, "build.fingerprint", "samsung/ks01lteskt/ks01lte:5.0.1/LRX22C/E330SKSUDPI2:user/release-keys");
-            set_ro_product_prop(source, "device", "ks01lteskt");
-            set_ro_product_prop(source, "model", "SHV-E330S");
-            set_ro_product_prop(source, "name", "ks01lteskt");
+            set_ro_product_prop(source, "build.fingerprint", "afyonltetmo-user 4.4.2 KOT49H G386TUVU1ANK3 release-keys");
+            set_ro_product_prop(source, "device", "afyonltetmo");
+            set_ro_product_prop(source, "model", "SM-G386T");
+            set_ro_product_prop(source, "name", "afyonltetmo");
         }
-        property_override("ro.build.description", "ks01lteskt-user 5.0.1 LRX22C E300SKSUDPI2 release-keys");
-        property_override("ro.build.product", "ks01lteskt");
-    } else if (bootloader.find("E330K") == 0) {
-        /* ks01ltektt */
+        property_override("ro.build.description", "afyonltetmo-user 4.4.2 KOT49H G386TUVU1ANK3 release-keys");
+        property_override("ro.build.product", "afyonltetmo");
+    } else if (bootloader.find("G386T1") == 0) {
+        /* afyonlteMetroPCS -- just in case something weird happens */
         for (const auto &source : ro_product_props_default_source_order) {
-            set_ro_product_prop(source, "build.fingerprint", "samsung/ks01ltektt/ks01lte:5.0.1/LRX22C/E330KKKUDPH1:user/release-keys");
-            set_ro_product_prop(source, "device", "ks01ltektt");
-            set_ro_product_prop(source, "model", "SHV-E330K");
-            set_ro_product_prop(source, "name", "ks01ltektt");
+            set_ro_product_prop(source, "build.fingerprint", "afyonltetmo-user 4.4.2 KOT49H G386TUVU1ANK3 release-keys");
+            set_ro_product_prop(source, "device", "afyonltetmo");
+            set_ro_product_prop(source, "model", "SM-G386T");
+            set_ro_product_prop(source, "name", "afyonltetmo");
         }
-        property_override("ro.build.description", "ks01ltektt-user 5.0.1 LRX22C E330KKKUDPH1 release-keys");
-        property_override("ro.build.product", "ks01ltektt");
-    } else if (bootloader.find("E330L") == 0) {
-        /* ks01ltelgt */
-        for (const auto &source : ro_product_props_default_source_order) {
-            set_ro_product_prop(source, "build.fingerprint", "samsung/ks01ltelgt/ks01lte:5.0.1/LRX22C/E330LKLUDPH4:user/release-keys");
-            set_ro_product_prop(source, "device", "ks01ltelgt");
-            set_ro_product_prop(source, "model", "SHV-E330L");
-            set_ro_product_prop(source, "name", "ks01ltelgt");
-        }
-        property_override("ro.build.description", "ks01ltelgt-user 5.0.1 LRX22C E330LKLUDPH4 release-keys");
-        property_override("ro.build.product", "ks01ltelgt");
+        property_override("ro.build.description", "afyonltetmo-user 4.4.2 KOT49H G386TUVU1ANK3 release-keys");
+        property_override("ro.build.product", "afyonltetmo");
     }
 
     const std::string device = GetProperty("ro.product.device", "");

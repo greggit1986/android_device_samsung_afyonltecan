@@ -13,58 +13,56 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-DEVICE_PATH := device/samsung/ks01lte
-COMMON_PATH := device/samsung/msm8974-common
+DEVICE_PATH := device/samsung/afyonltecan
+COMMON_PATH := device/samsung/msm8226-common
 
-# inherit from common msm8974-common
-include device/samsung/msm8974-common/BoardConfigCommon.mk
+# inherit from common msm8226-common
+include device/samsung/msm8226-common/BoardConfigCommon.mk
 
-# Bluetooth
-BOARD_CUSTOM_BT_CONFIG := $(COMMON_PATH)/bluetooth/vnd_ks01lte.txt
+# Bluetooth-TODO
+#BOARD_CUSTOM_BT_CONFIG := $(COMMON_PATH)/bluetooth/vnd_afyonlte.txt
 
 # Build Fingerprint
-BUILD_FINGERPRINT := samsung/ks01ltexx/ks01lte:5.0.1/LRX22C/I9506XXUDRB1:user/release-keys
+BUILD_FINGERPRINT := samsung/afyonltevl/afyonltecan:4.4.2/KOT49H/G386WVLS1AQA1:user/release-keys
 
 # Enable SVELTE memory configuration
 MALLOC_SVELTE := true
 
-TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
-
 # Kernel
-TARGET_KERNEL_CONFIG := lineage_ks01lte_defconfig
+TARGET_KERNEL_CONFIG := lineage_afyonltecan_defconfig
 
 # OTA
-TARGET_OTA_ASSERT_DEVICE := ks01lte,ks01ltexx,GT-I9506,ks01lteskt,ks01ltektt,ks01ltelgt
-
-# Partition
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2390753280	  # Dont change it
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 12528352256
+TARGET_OTA_ASSERT_DEVICE := afyonltecan,afyonltetmo,afyonlteMetroPCS,afyonltemtr,SM-G386T,SM-G386T1,SM-G386W,G386T,G386T1
 
 # Properties
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 
 # Include
-TARGET_SPECIFIC_HEADER_PATH := $(COMMON_PATH)/ks01lte-include
+TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
+TARGET_SPECIFIC_HEADER_PATH := $(COMMON_PATH)/include
 
 # Init
-TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_ks01lte
+TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_afyonlte
 
 TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
-    /system/vendor/bin/hw/android.hardware.sensors@1.0-service.samsung8974=22 \
+    /system/vendor/bin/hw/android.hardware.sensors@1.0-service.samsung8226=22 \
     /system/vendor/bin/hw/rild=27
 
+# Init-recovery-bringup
+#TARGET_RECOVERY_DEVICE_MODULES := libinit_afyonlte
+
 # NFC
-BOARD_NFC_HAL_SUFFIX := msm8974
+#BOARD_NFC_HAL_SUFFIX := msm8226
 
 # Radio
 BOARD_PROVIDES_LIBRIL := true
 
 # NFC
-include $(COMMON_PATH)/nfc/bcm2079x/board.mk
+#include $(COMMON_PATH)/nfc/pn547/board.mk
 
 # Radio/RIL
 include $(COMMON_PATH)/radio/single/board.mk
 
 # inherit from the proprietary version
-include vendor/samsung/ks01lte/BoardConfigVendor.mk
+include vendor/samsung/afyonltecan/BoardConfigVendor.mk

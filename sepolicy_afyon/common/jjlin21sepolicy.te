@@ -1,0 +1,224 @@
+allow vdc vendor_file:file { read getattr };
+allow apexd vendor_file:file { read getattr };
+
+#============= cameraserver ==============
+allow cameraserver camera_socket:sock_file { write };
+allow cameraserver video_device:chr_file { read write };
+
+#============= vendor_init ==============
+allow vendor_init firmware_file:dir { relabelto };
+allow vendor_init wcnss_device:chr_file { write open };
+allow vendor_init init_service_status_private_prop:file { read };
+allow vendor_init shell_prop:file { read };
+allow vendor_init radio_core_data_file:dir { create add_name write setattr getattr };
+allow vendor_init vendor_file:file { getattr };
+
+allow firmware_file labeledfs:filesystem { associate };
+
+#============= linkerconfig ==============
+allow linkerconfig vendor_file:file { getattr read };
+
+#============= prng_seeder ==============
+allow prng_seeder vendor_file:file { getattr read };
+
+#============= system_suspend ==============
+allow system_suspend vendor_file:file { getattr read };
+
+#============= keystore ==============
+allow keystore vendor_file:file { read getattr };
+
+#============= fsverity_init ==============
+allow fsverity_init vendor_file:file { read getattr };
+
+#============= surfaceflinger ==============
+allow surfaceflinger vendor_file:file { read getattr open execute };
+
+#============= bootanim ==============
+allow bootanim vendor_file:file { read getattr open execute };
+
+#============= fsck ==============
+allow fsck vendor_file:file { read getattr };
+allow fsck fsck:capability { dac_override };
+
+#============= tombstoned ==============
+allow tombstoned vendor_file:file { read getattr };
+
+#============= hal_graphics_composer_default ==============
+allow hal_graphics_composer_default sysfs:file { read open };
+allow hal_graphics_composer_default default_prop:file { read open getattr };
+allow hal_graphics_composer_default system_prop:file { read open getattr };
+
+#============= hal_graphics_composer_default ==============
+allow toolbox vendor_file:file { read getattr };
+
+#============= derive_sdk ==============
+allow derive_sdk vendor_file:file { read getattr };
+
+#============= vold_prepare_subdirs ==============
+allow vold_prepare_subdirs vendor_file:file { read getattr };
+
+#============= derive_classpath ==============
+allow derive_classpath vendor_file:file { read getattr };
+
+#============= art_boot ==============
+allow art_boot vendor_file:file { read getattr };
+
+#============= odsign ==============
+allow odsign vendor_file:file { read getattr };
+
+#============= shell ==============
+allow shell vendor_file:file { read getattr };
+
+#============= credstore ==============
+allow credstore vendor_file:file { read getattr };
+
+#============= odrefresh ==============
+allow odrefresh apexd_config_prop:file { open getattr };
+allow odrefresh apexd_payload_metadata_prop:file { open getattr };
+allow odrefresh vendor_file:file { read getattr open };
+allow odrefresh aac_drc_prop:file { getattr open };
+allow odrefresh adaptive_haptics_prop:file { open getattr };
+allow odrefresh adbd_config_prop:file { open getattr };
+allow odrefresh alarm_instance_prop:file { open getattr };
+allow odrefresh apk_verity_prop:file { open getattr };
+allow odrefresh audio_config_prop:file { open getattr };
+allow odrefresh bg_boot_complete_prop:file { open getattr };
+allow odrefresh boot_animation_prop:file { open getattr };
+allow odrefresh bootanim_config_prop:file { open getattr };
+allow odrefresh ctl_bootanim_prop:file { open getattr };
+allow odrefresh bootloader_boot_reason_prop:file { open getattr };
+allow odrefresh boottime_prop:file { open getattr };
+allow odrefresh boottime_public_prop:file { open getattr };
+allow odrefresh ctl_vendor_imsrcsservice_prop:file { open getattr };
+allow odrefresh ctl_vendor_wigigsvc_prop:file { open getattr };
+allow odrefresh sensors_prop:file { open getattr };
+allow odrefresh serialno_prop:file { open getattr };
+allow odrefresh spcomlib_prop:file { open getattr };
+allow odrefresh storage_config_prop:file { open getattr };
+allow odrefresh surfaceflinger_display_prop:file { getattr open };
+allow odrefresh system_trace_prop:file { getattr open };
+allow odrefresh keystore_config_prop:file { getattr open };
+allow odrefresh keystore_crash_prop:file { getattr open };
+allow odrefresh keystore_listen_prop:file { getattr open };
+allow odrefresh ctl_odsign_prop:file { open getattr };
+allow odrefresh odsign_prop:file { open getattr };
+allow odrefresh ab_update_gki_prop:file { open getattr };
+allow odrefresh adbd_prop:file { open getattr };
+allow odrefresh system_adbd_prop:file { open getattr };
+allow odrefresh alarm_boot_prop:file { open getattr };
+allow odrefresh alarm_handled_prop:file { open getattr };
+allow odrefresh apexd_prop:file { open getattr };
+allow odrefresh bg_daemon_prop:file { open getattr };
+allow odrefresh bluetooth_a2dp_offload_prop:file { open getattr };
+allow odrefresh bluetooth_audio_hal_prop:file { open getattr };
+allow odrefresh bluetooth_prop:file { open getattr };
+allow odrefresh exported_bluetooth_prop:file { open getattr };
+allow odrefresh boot_mode_prop:file { open getattr };
+allow odrefresh bpf_progs_loaded_prop:file { open getattr };
+allow odrefresh bservice_prop:file { open getattr };
+allow odrefresh build_attestation_prop:file { open getattr };
+allow odrefresh build_bootimage_prop:file { open getattr };
+allow odrefresh build_config_prop:file { open getattr };
+allow odrefresh camera2_extensions_prop:file { open getattr };
+allow odrefresh camera_calibration_prop:file { open getattr };
+allow odrefresh camera_prop:file { open getattr };
+allow odrefresh vendor_persist_camera_prop:file { open getattr };
+allow odrefresh camerax_extensions_prop:file { open getattr };
+allow odrefresh charger_config_prop:file { open getattr };
+allow odrefresh charger_prop:file { open getattr };
+allow odrefresh charger_status_prop:file { open getattr };
+allow odrefresh codec2_config_prop:file { open getattr };
+allow odrefresh cold_boot_done_prop:file { open getattr };
+allow odrefresh composd_vm_art_prop:file { open getattr };
+allow odrefresh composd_vm_vendor_prop:file { open getattr };
+allow odrefresh coresight_prop:file { open getattr };
+allow odrefresh cpu_variant_prop:file { open getattr };
+allow odrefresh crash_prop:file { open getattr };
+allow odrefresh crashrecovery_prop:file { open getattr };
+allow odrefresh ctl_LKCore_prop:file { open getattr };
+allow odrefresh ctl_apex_load_prop:file { open getattr };
+allow odrefresh ctl_bugreport_prop:file { open getattr };
+allow odrefresh ctl_console_prop:file { open getattr };
+allow odrefresh ctl_default_prop:file { open getattr };
+allow odrefresh ctl_dumpstate_prop:file { open getattr };
+allow odrefresh ctl_fuse_prop:file { open getattr };
+allow odrefresh ctl_gsid_prop:file { open getattr };
+allow odrefresh ctl_hbtp_prop:file { open getattr };
+allow odrefresh ctl_interface_restart_prop:file { open getattr };
+allow odrefresh ctl_interface_start_prop:file { open getattr };
+allow odrefresh ctl_interface_stop_prop:file { open getattr };
+allow odrefresh ctl_mdnsd_prop:file { open getattr };
+allow odrefresh ctl_mediatranscoding_prop:file { open getattr };
+allow odrefresh ctl_netmgrd_prop:file { open getattr };
+allow odrefresh ctl_port-bridge_prop:file { open getattr };
+allow odrefresh ctl_qmuxd_prop:file { open getattr };
+allow odrefresh ctl_restart_prop:file { open getattr };
+allow odrefresh ctl_rildaemon_prop:file { open getattr };
+allow odrefresh ctl_sigstop_prop:file { open getattr };
+allow odrefresh ctl_snapuserd_prop:file { open getattr };
+allow odrefresh ctl_start_prop:file { open getattr };
+allow odrefresh ctl_stop_prop:file { open getattr };
+allow odrefresh dck_prop:file { open getattr };
+allow odrefresh debugfs_restriction_prop:file { open getattr };
+allow odrefresh device_config_activity_manager_native_boot_prop:file { open getattr };
+allow odrefresh device_config_boot_count_prop:file { open getattr };
+allow odrefresh device_config_camera_native_prop:file { open getattr };
+allow odrefresh device_config_configuration_prop:file { open getattr };
+allow odrefresh device_config_connectivity_prop:file { open getattr };
+allow odrefresh device_config_core_experiments_team_internal_prop:file { open getattr };
+allow odrefresh device_config_edgetpu_native_prop:file { open getattr };
+allow odrefresh device_config_input_native_boot_prop:file { open getattr };
+allow odrefresh device_config_lmkd_native_prop:file { open getattr };
+allow odrefresh device_config_mglru_native_prop:file { open getattr };
+allow odrefresh device_config_netd_native_prop:file { open getattr };
+allow odrefresh device_config_nnapi_native_prop:file { open getattr };
+allow odrefresh hwservicemanager_prop:file { open getattr };
+allow odrefresh hidl_memory_prop:file { open getattr };
+
+#============= flags_health_check ==============
+allow flags_health_check keystore_config_prop:file { getattr open };
+allow flags_health_check keystore_crash_prop:file { getattr open };
+allow flags_health_check keystore_listen_prop:file { getattr open };
+allow flags_health_check last_boot_reason_prop:file { open };
+allow flags_health_check bootanim_config_prop:file { getattr open };
+allow flags_health_check bootanim_system_prop:file { getattr open };
+allow flags_health_check bootloader_boot_reason_prop:file { open };
+allow flags_health_check ctl_bootanim_prop:file { open getattr };
+allow flags_health_check ctl_odsign_prop:file { open getattr };
+allow flags_health_check odsign_prop:file { open getattr };
+allow flags_health_check vendor_file:file { read getattr };
+
+#============= zygote ==============
+allow zygote vendor_file:file { read getattr open execute };
+
+#============= Misc-0/cache7 ==============
+allow logd vendor_file:file { read getattr };
+allow lmkd vendor_file:file { read getattr };
+allow logpersist vendor_file:file { read getattr };
+allow extra_free_kbytes vendor_file:file { read getattr };
+allow recovery_persist vendor_file:file { read getattr };
+allow bpfloader vendor_file:file { read getattr };
+allow statsd vendor_file:file { read getattr };
+allow netd vendor_file:file { read getattr };
+allow hal_allocator_default vendor_file:file { read getattr };
+allow audioserver vendor_file:file { read getattr };
+allow misctrl vendor_file:file { read getattr };
+allow gsid vendor_file:file { read getattr };
+allow bootstat vendor_file:file { read getattr };
+allow traced_probes vendor_file:file { read getattr };
+allow traced vendor_file:file { read getattr };
+allow atrace vendor_file:file { read getattr };
+allow cameraserver vendor_file:file { read getattr };
+allow idmap vendor_file:file { read getattr };
+allow incidentd vendor_file:file { read getattr };
+allow installd vendor_file:file { read getattr };
+allow mediaextractor vendor_file:file { read getattr };
+allow mediametrics vendor_file:file { read getattr };
+allow mediaserver vendor_file:file { read getattr };
+allow wificond vendor_file:file { read getattr };
+allow adbroot vendor_file:file { read getattr };
+allow mediaswcodec vendor_file:file { read getattr };
+allow storaged vendor_file:file { read getattr };
+allow gatekeeperd vendor_file:file { read getattr };
+allow usbd vendor_file:file { read getattr };
+allow adbd vendor_file:file { read getattr };

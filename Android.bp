@@ -4,4 +4,5 @@
 //
 
 soong_namespace {
+    imports: ["device/samsung/msm8226-common"],
 }

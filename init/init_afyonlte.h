@@ -28,8 +28,8 @@
    IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef __INIT_KS01LTE__H__
-#define __INIT_KS01LTE__H__
+#ifndef __INIT_AFYONLTE__H__
+#define __INIT_AFYONLTE__H__
 
 void cdma_properties(char const operator_alpha[],
         char const operator_numeric[],
@@ -42,4 +42,4 @@ void init_target_properties();
 void property_override(char const prop[], char const value[], bool add=true);
 void set_ro_product_prop(char const prop[], char const value[]);
 
-#endif /* __INIT_KS01LTE__H__ */
+#endif /* __INIT_AFYONLTE__H__ */
