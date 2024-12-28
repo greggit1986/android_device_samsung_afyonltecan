@@ -16,4 +16,4 @@
 
 # Board specific SELinux policy variable definitions
 BOARD_SEPOLICY_DIRS += \
-    device/samsung/afyonltecan/sepolicy_afyonjj/common
+    device/samsung/afyonltecan/sepolicy/private
