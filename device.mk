@@ -26,10 +26,6 @@ PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 PRODUCT_ENFORCE_RRO_TARGETS := *
 
-# Display Device Config-ms8974
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/displayconfig/afyonltecan/display_id_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/displayconfig/display_id_0.xml
-
 # Keylayouts
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
