@@ -25,7 +25,7 @@ allow toolbox rootfs:dir { open read setattr };
 
 #============= vendor_init ==============
 allow vendor_init efs_file:chr_file getattr;
-allow vendor_init init_service_status_private_prop:file read;
+#allow vendor_init init_service_status_private_prop:file read; #unknown type
 allow vendor_init radio_core_data_file:dir { add_name create getattr setattr write };
 allow vendor_init unlabeled:blk_file { getattr relabelfrom };
 allow vendor_init unlabeled:chr_file { getattr relabelfrom };
@@ -39,10 +39,10 @@ allow vold rootfs:dir { add_name create write };
 allow zygote device:dir { add_name create open read setattr write };
 allow zygote device:file { create open write };
 
-#============= mediaprovider_app ==============
-allow mediaprovider_app rootfs:dir { add_name create read write };
-allow mediaprovider_app rootfs:dir {open setattr};
-allow mediaprovider_app rootfs:file getattr;
+#============= mediaprovider_app #unknow type ==============
+#allow mediaprovider_app rootfs:dir { add_name create read write };
+#allow mediaprovider_app rootfs:dir {open setattr};
+#allow mediaprovider_app rootfs:file getattr;
 
 #============= priv_app ==============
 allow priv_app rootfs:dir { add_name create write };
