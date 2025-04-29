@@ -42,15 +42,9 @@ TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
 TARGET_SPECIFIC_HEADER_PATH := $(COMMON_PATH)/include
 
-# Init
-TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_afyonlte
-
 TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
     /system/vendor/bin/hw/android.hardware.sensors@1.0-service.samsung8226=22 \
     /system/vendor/bin/hw/rild=27
-
-# Init-recovery-bringup
-#TARGET_RECOVERY_DEVICE_MODULES := libinit_afyonlte
 
 # NFC
 #BOARD_NFC_HAL_SUFFIX := msm8226
