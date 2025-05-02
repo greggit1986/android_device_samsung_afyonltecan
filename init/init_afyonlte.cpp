@@ -125,12 +125,12 @@ void vendor_load_properties()
     if (bootloader.find("G386W") == 0) {
         /* Afyonltecan */
         for (const auto &source : ro_product_props_default_source_order) {
-            set_ro_product_prop(source, "build.fingerprint", "samsung/afyonltevl/afyonltecan:4.4.2/KOT49H/G386WVLS1AQA1:user/release-keys");
+            set_ro_product_prop(source, "build.fingerprint", "samsung/afyonltevl/afyonltecan:4.4.2/KOT49H/G386WVLS1AQB1:user/release-keys");
             set_ro_product_prop(source, "device", "afyonltecan");
             set_ro_product_prop(source, "model", "SM-G386W");
             set_ro_product_prop(source, "name", "afyonltecan");
         }
-        property_override("ro.build.description", "afyonltevl-user 4.4.2 KOT49H G386WVLS1AQA1 release-keys");
+        property_override("ro.build.description", "afyonltevl-user 4.4.2 KOT49H G386WVLS1AQB1 release-keys");
         property_override("ro.build.product", "afyonltecan");
     } else if (bootloader.find("G386T") == 0) {
         /* afyonltetmo and afyonlteMetroPCS */

@@ -23,7 +23,7 @@ include device/samsung/msm8226-common/BoardConfigCommon.mk
 #BOARD_CUSTOM_BT_CONFIG := $(COMMON_PATH)/bluetooth/vnd_afyonlte.txt
 
 # Build Fingerprint
-BUILD_FINGERPRINT := samsung/afyonltevl/afyonltecan:4.4.2/KOT49H/G386WVLS1AQA1:user/release-keys
+BUILD_FINGERPRINT := samsung/afyonltevl/afyonltecan:4.4.2/KOT49H/G386WVLS1AQB1:user/release-keys
 
 # Enable SVELTE memory configuration
 MALLOC_SVELTE := true
