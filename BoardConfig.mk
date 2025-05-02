@@ -58,6 +58,9 @@ TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
 # Radio
 BOARD_PROVIDES_LIBRIL := true
 
+TARGET_LD_SHIM_LIBS += \
+    /vendor/lib/libsec-ril.so|libcutils_shim.so
+
 # NFC
 #include $(COMMON_PATH)/nfc/pn547/board.mk
 
