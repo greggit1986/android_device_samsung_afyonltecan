@@ -13,6 +13,8 @@ allow cameraserver video_device:chr_file { read write open ioctl };
 allow cameraserver vendor_file:file { open execute read getattr };
 allow cameraserver vendor_default_prop:file { open read getattr };
 allow cameraserver system_data_root_file:sock_file { write ioctl };
+allow cameraserver sysfs_camera:dir search;
+allow cameraserver sysfs_camera:file { open read };
 
 #============= vendor_init ==============
 allow vendor_init firmware_file:dir { relabelto };
@@ -33,9 +35,14 @@ allow hwservicemanager vendor_file:file { getattr read };
 
 #============= hal_lineage_health_default ==============
 allow hal_lineage_health_default sysfs_batteryinfo:dir { search read write };
+allow hal_lineage_health_default sysfs_batteryinfo:file { getattr open read };
+
 
 #============= firmware_file ==============
 allow firmware_file labeledfs:filesystem { associate };
+
+#============= init ==============
+allow init hal_thermal_default:process setpgid;
 
 #============= linkerconfig ==============
 #allow linkerconfig vendor_file:file { getattr read }; #unknown type
@@ -48,6 +55,18 @@ allow prng_seeder vendor_file:file { getattr read };
 
 #============= keystore ==============
 allow keystore vendor_file:file { read getattr };
+
+#============= platform_app ==============
+allow platform_app vendor_file:file { execute getattr open read };
+
+#============= priv_app ==============
+allow priv_app vendor_file:file { getattr read };
+
+#============= system_app ==============
+allow system_app vendor_file:file { getattr read };
+
+#============= system_server ==============
+allow system_server vendor_file:file { getattr read };
 
 #============= fsverity_init ==============
 #allow fsverity_init vendor_file:file { read getattr }; #unknown type
