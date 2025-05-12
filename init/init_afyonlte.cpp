@@ -28,49 +28,178 @@
    IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <fcntl.h>
+#include <unistd.h>
 
-#include <android-base/logging.h>
+#include <android-base/file.h>
+#include <android-base/strings.h>
+
+#define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
+#include <sys/_system_properties.h>
 #include <android-base/properties.h>
 
+#define SIMSLOT_FILE "/proc/simslot_count"
+
+#include <android-base/logging.h>
+
+#include "vendor_init.h"
 #include "property_service.h"
 
-#include "init_msm8226.h"
+#define SERIAL_NUMBER_FILE "/efs/FactoryApp/serial_no"
 
 using android::base::GetProperty;
+using android::base::ReadFileToString;
+using android::base::Trim;
+
+void property_override(char const prop[], char const value[])
+{
+    prop_info *pi;
+
+    pi = (prop_info*) __system_property_find(prop);
+    if (pi)
+        __system_property_update(pi, value, strlen(value));
+    else
+        __system_property_add(prop, strlen(prop), value, strlen(value));
+}
+
+void property_override_dual(char const system_prop[], char const vendor_prop[], char const value[])
+{
+    property_override(system_prop, value);
+    property_override(vendor_prop, value);
+}
+
+/* Read the file at filename and returns the integer
+ * value in the file.
+ *
+ * @prereq: Assumes that integer is non-negative.
+ *
+ * @return: integer value read if succesful, -1 otherwise. */
+int read_integer(const char* filename)
+{
+	int retval;
+	FILE * file;
+
+	/* open the file */
+	if (!(file = fopen(filename, "r"))) {
+		return -1;
+	}
+	/* read the value from the file */
+	fscanf(file, "%d", &retval);
+	fclose(file);
+
+	return retval;
+}
+
+/*void set_fingerprint()
+{
+	property_override_dual("ro.build.fingerprint", "ro.boot.fingerprint", "samsung/afyonltevl/afyonltecan:4.4.2/KOT49H/G386WVLS1AQB1:user/release-keys");
+	property_override("ro.build.version.security_patch", "");
+}*/ /*Moved to vendor_load_properties()-clean or revert after testing all variants*/
+
+void set_cdma_properties(const char *operator_alpha, const char *operator_numeric, const char * network)
+{
+	/* Dynamic CDMA Properties */
+	property_override("ro.cdma.home.operator.alpha", operator_alpha);
+	property_override("ro.cdma.home.operator.numeric", operator_numeric);
+	property_override("ro.telephony.default_network", network);
+
+	/* Static CDMA Properties */
+	property_override("ril.subscription.types", "NV,RUIM");
+	property_override("ro.telephony.default_cdma_sub", "0");
+	property_override("ro.telephony.get_imsi_from_sim", "true");
+	property_override("ro.telephony.ril.config", "newDriverCallU,newDialCode");
+	property_override("telephony.lteOnCdmaDevice", "1");
+}
+
+void set_dsds_properties()
+{
+	property_override("ro.multisim.simslotcount", "2");
+	property_override("ro.telephony.ril.config", "simactivation");
+	property_override("persist.radio.multisim.config", "dsds");
+	property_override("rild.libpath2", "/vendor/lib/libsec-ril-dsds.so");
+	property_override("ro.multisim.audio_follow_default_sim", "false");
+}
+
+void set_gsm_properties()
+{
+	property_override("telephony.lteOnCdmaDevice", "0");
+	property_override("ro.telephony.default_network", "9");
+}
+
+void set_lte_properties()
+{
+	property_override("persist.radio.lte_vrte_ltd", "1");
+	property_override("telephony.lteOnCdmaDevice", "0");
+	property_override("telephony.lteOnGsmDevice", "1");
+	property_override("ro.telephony.default_network", "10");
+}
+
+void set_target_properties(const char *device, const char *model)
+{
+	property_override_dual("ro.product.device", "ro.product.vendor.device", device);
+	property_override_dual("ro.product.model", "ro.product.vendor.model", model);
+
+	property_override("ro.ril.telephony.mqanelements", "6");
+
+	/* check and/or set fingerprint */
+	/* set_fingerprint(); */ /*Moved to vendor_load_properties()-clean or revert after testing all variants*/
+
+	/* check for multi-sim devices */
+
+	/* check if the simslot count file exists */
+	if (access(SIMSLOT_FILE, F_OK) == 0) {
+		int sim_count = read_integer(SIMSLOT_FILE);
+
+		/* set the dual sim props */
+		if (sim_count == 2)
+			set_dsds_properties();
+	}
+
+	char const *serial_number_file = SERIAL_NUMBER_FILE;
+	std::string serial_number;
+
+	if (ReadFileToString(serial_number_file, &serial_number)) {
+        	serial_number = Trim(serial_number);
+        	property_override("ro.serialno", serial_number.c_str());
+	}
+}
 
 void vendor_load_properties()
 {
-    std::string bootloader = GetProperty("ro.bootloader", "");
+	char *device = NULL;
+	char *model = NULL;
 
     if (bootloader.find("G386W") == 0) {
         /* afyonltecan */
+        device = (char *)"afyonltecan";
+        model = (char *)"SM-G386W";
         property_override("ro.build.description", "afyonltevl-user 4.4.2 KOT49H G386WVLS1AQB1 release-keys");
-        set_ro_product_prop("device", "afyonltecan");
-        set_ro_build_prop("fingerprint", "samsung/afyonltevl/afyonltecan:4.4.2/KOT49H/G386WVLS1AQB1:user/release-keys");
-        set_ro_product_prop("model", "SM-G386W");
-        set_ro_product_prop("name", "afyonltecan");
-        gsm_properties("3", "0");
+	property_override_dual("ro.build.fingerprint", "ro.boot.fingerprint", "samsung/afyonltevl/afyonltecan:4.4.2/KOT49H/G386WVLS1AQB1:user/release-keys");
+	property_override("ro.build.version.security_patch", "");
+        set_lte_properties();
     } else if (bootloader.find("G386T") == 0) {
         /* afyonltetmo and afyonlteMetroPCS */
+        device = (char *)"afyonltetmo";
+        model = (char *)"SM-G386T";
         property_override("ro.build.description", "afyonltetmo-user 4.4.2 KOT49H G386TUVU1AQD2 release-keys");
-        set_ro_product_prop("device", "afyonltetmo");
-        set_ro_build_prop("fingerprint", "samsung/afyonltetmo/afyonltetmo:4.4.2/KOT49H/G386TUVU1AQD2:user/release-keys");
-        set_ro_product_prop("model", "SM-G386T");
-        set_ro_product_prop("name", "afyonltetmo");
-        gsm_properties("3", "0");
+        property_override_dual("ro.build.fingerprint", "ro.boot.fingerprint", "samsung/afyonltetmo/afyonltetmo:4.4.2/KOT49H/G386TUVU1AQD2:user/release-keys");
+	property_override("ro.build.version.security_patch", "");
+        set_lte_properties();
     } else if (bootloader.find("G386T1") == 0) {
         /* afyonlteMetroPCS -- just in case something weird happens */
+        device = (char *)"afyonlteMetroPCS";
+        model = (char *)"SM-G386T";
         property_override("ro.build.description", "afyonltetmo-user 4.4.2 KOT49H G386TUVU1AQD2 release-keys");
-        set_ro_product_prop("device", "afyonlteMetroPCS");
-        set_ro_build_prop("fingerprint", "samsung/afyonltetmo/afyonltetmo:4.4.2/KOT49H/G386TUVU1AQD2:user/release-keys");
-        set_ro_product_prop("model", "SM-G386T");
-        set_ro_product_prop("name", "afyonltetmo");
-        gsm_properties("3", "0");
+        property_override_dual("ro.build.fingerprint", "ro.boot.fingerprint", "samsung/afyonltetmo/afyonltetmo:4.4.2/KOT49H/G386TUVU1AQD2:user/release-keys");
+	property_override("ro.build.version.security_patch", "");
+        set_lte_properties();
     } else {
-        gsm_properties("3", "0");
-    }
+		return;
+	}
 
-    std::string device = GetProperty("ro.product.device", "");
-    LOG(ERROR) << "Found bootloader id " << bootloader <<  " setting build properties for "
-        << device <<  " device" << std::endl;
+	/* set the properties */
+	set_target_properties(device, model);
 }

@@ -19,12 +19,8 @@ cc_library_static {
     recovery_available: true,
     srcs: ["init_afyonlte.cpp"],
     include_dirs: [
-        "device/samsung/msm8226-common/init",
         "system/core/base/include",
         "system/core/init",
     ],
-    shared_libs: [
-        "libbase",
-    ],
-    whole_static_libs: ["libinit_helpers_sam8226"]
+    shared_libs: ["libbase"],
 }
