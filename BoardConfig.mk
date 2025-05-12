@@ -35,7 +35,7 @@ TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_afyonlte
 # include $(COMMON_PATH)/nfc/pn547/board.mk
 
 # Radio/RIL
-#include $(COMMON_PATH)/radio/single/board.mk
+include $(COMMON_PATH)/radio/single/board.mk
 
 # inherit from the proprietary version
 include vendor/samsung/afyonltecan/BoardConfigVendor.mk
