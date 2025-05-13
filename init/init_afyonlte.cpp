@@ -172,6 +172,8 @@ void vendor_load_properties()
 	char *device = NULL;
 	char *model = NULL;
 
+	std::string bootloader = android::base::GetProperty("ro.bootloader", "");
+
     if (bootloader.find("G386W") == 0) {
         /* afyonltecan */
         device = (char *)"afyonltecan";
