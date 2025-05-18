@@ -45,9 +45,9 @@ void vendor_load_properties()
 
     if (bootloader.find("G386W") == 0) {
         /* afyonltecan */
-        property_override("ro.build.description", "afyonltevl-user 4.4.2 KOT49H G386WVLS1AQA1 release-keys");
+        property_override("ro.build.description", "afyonltevl-user 4.4.2 KOT49H G386WVLS1AQB1 release-keys");
         set_ro_product_prop("device", "afyonltecan");
-        set_ro_build_prop("fingerprint", "samsung/afyonltevl/afyonltecan:4.4.2/KOT49H/G386WVLS1AQA1:user/release-keys");
+        set_ro_build_prop("fingerprint", "samsung/afyonltevl/afyonltecan:4.4.2/KOT49H/G386WVLS1AQB1:user/release-keys");
         set_ro_product_prop("model", "SM-G386W");
         set_ro_product_prop("name", "afyonltecan");
         gsm_properties("3", "0");
