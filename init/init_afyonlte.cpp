@@ -181,7 +181,7 @@ void vendor_load_properties()
         property_override("ro.build.description", "afyonltevl-user 4.4.2 KOT49H G386WVLS1AQB1 release-keys");
 	property_override_dual("ro.build.fingerprint", "ro.boot.fingerprint", "samsung/afyonltevl/afyonltecan:4.4.2/KOT49H/G386WVLS1AQB1:user/release-keys");
 	property_override("ro.build.version.security_patch", "");
-        set_lte_properties();
+        set_gsm_properties();
     } else if (bootloader.find("G386T") == 0) {
         /* afyonltetmo and afyonlteMetroPCS */
         device = (char *)"afyonltetmo";
@@ -189,7 +189,7 @@ void vendor_load_properties()
         property_override("ro.build.description", "afyonltetmo-user 4.4.2 KOT49H G386TUVU1AQD2 release-keys");
         property_override_dual("ro.build.fingerprint", "ro.boot.fingerprint", "samsung/afyonltetmo/afyonltetmo:4.4.2/KOT49H/G386TUVU1AQD2:user/release-keys");
 	property_override("ro.build.version.security_patch", "");
-        set_lte_properties();
+        set_gsm_properties();
     } else if (bootloader.find("G386T1") == 0) {
         /* afyonlteMetroPCS -- just in case something weird happens */
         device = (char *)"afyonlteMetroPCS";
@@ -197,7 +197,7 @@ void vendor_load_properties()
         property_override("ro.build.description", "afyonltetmo-user 4.4.2 KOT49H G386TUVU1AQD2 release-keys");
         property_override_dual("ro.build.fingerprint", "ro.boot.fingerprint", "samsung/afyonltetmo/afyonltetmo:4.4.2/KOT49H/G386TUVU1AQD2:user/release-keys");
 	property_override("ro.build.version.security_patch", "");
-        set_lte_properties();
+        set_gsm_properties();
     } else {
 		return;
 	}
