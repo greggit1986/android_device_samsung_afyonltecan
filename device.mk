@@ -20,6 +20,10 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # Get non-open-source specific aspects
 $(call inherit-product, vendor/samsung/afyonltecan/afyonltecan-vendor.mk)
 
+# BPF
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.kernel.ebpf.supported=false
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
