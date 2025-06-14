@@ -29,7 +29,7 @@ TARGET_KERNEL_RECOVERY_CONFIG := lineage_afyonltecan-recovery_defconfig
 TARGET_KERNEL_CONFIG := lineage_afyonltecan_defconfig
 
 # Fingerprint
-BUILD_FINGERPRINT := samsung/afyonltevl/afyonltecan:4.4.2/KOT49H/G386WVLS1AQA1:user/release-keys
+BUILD_FINGERPRINT := samsung/afyonltevl/afyonltecan:4.4.2/KOT49H/G386WVLS1AQB1:user/release-keys
 
 # Init
 TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_afyonlte
