@@ -25,6 +25,9 @@ TARGET_LD_SHIM_LIBS += \
 # Kernel
 TARGET_KERNEL_CONFIG := lineage_afyonltecan_defconfig
 
+# Build Fingerprint
+BUILD_FINGERPRINT := samsung/afyonltevl/afyonltecan:4.4.2/KOT49H/G386WVLS1AQB1:user/release-keys
+
 # Init
 TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_afyonlte
 
