@@ -67,8 +67,5 @@ TARGET_LD_SHIM_LIBS += \
 # Radio/RIL
 include $(COMMON_PATH)/radio/single/board.mk
 
-# SELinux
-include device/samsung/afyonltecan/sepolicy/sepolicy.mk
-
 # inherit from the proprietary version
 include vendor/samsung/afyonltecan/BoardConfigVendor.mk
