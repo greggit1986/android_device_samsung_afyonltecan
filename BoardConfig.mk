@@ -56,16 +56,16 @@ TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
 #BOARD_NFC_HAL_SUFFIX := msm8226
 
 # Radio
-BOARD_PROVIDES_LIBRIL := true
+#BOARD_PROVIDES_LIBRIL := true
 
-TARGET_LD_SHIM_LIBS += \
-    /vendor/lib/libsec-ril.so|libcutils_shim.so
+#TARGET_LD_SHIM_LIBS += \
+#    /vendor/lib/libsec-ril.so|libcutils_shim.so
 
 # NFC
 #include $(COMMON_PATH)/nfc/pn547/board.mk
 
 # Radio/RIL
-include $(COMMON_PATH)/radio/single/board.mk
+#include $(COMMON_PATH)/radio/single/board.mk
 
 # inherit from the proprietary version
 include vendor/samsung/afyonltecan/BoardConfigVendor.mk
