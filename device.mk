@@ -27,7 +27,7 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 PRODUCT_ENFORCE_RRO_TARGETS := *
 
 # Init
-$(call soong_config_set,libinit,vendor_init_lib,//$(DEVICE_PATH):libinit_afyonlte)
+$(call soong_config_set,libinit,vendor_init_lib,libinit_afyonlte)
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
