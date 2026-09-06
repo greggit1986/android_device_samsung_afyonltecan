@@ -39,7 +39,6 @@ PRODUCT_COPY_FILES += \
 
 # Radio/RIL
 PRODUCT_PACKAGES += \
-    libcnefeatureconfig \
     librmnetctl
 
 # common msm8226
